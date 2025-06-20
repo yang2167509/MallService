@@ -1,0 +1,6 @@
+# 应用名称
+server:
+  port: 7000
+spring:
+  application:
+    name: admin
