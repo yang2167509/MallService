@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goods-service-8004
+  namespace: gjw-24-06-27
+  labels:
+    app: goods-service-8004
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goods-service-8004
+  template:
+    metadata:
+      name: goods-service-8004
+      labels:
+        app: goods-service-8004
+    spec:
+      containers:
+        - name: goods-service-8004
+          image: goods-service-8004:24.07.13
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8004
+      nodeSelector:
+        preferrednode: node3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: goods-service-8004
+  namespace: gjw-24-06-27
+spec:
+  type: NodePort
+  selector:
+    app: goods-service-8004
+  ports:
+    - protocol: TCP
+      port: 8004
+      targetPort: 8004
