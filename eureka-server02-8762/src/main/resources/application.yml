@@ -1,0 +1,24 @@
+## 应用名称
+#spring:
+#  application:
+#    name: eureka-server
+## 应用服务 WEB 访问端口
+#server:
+#  port: 8762
+#eureka:
+#  server:
+#    evictionIntervalTimerInMs: 60000
+#    enableSelfPreservation: false
+#  instance:
+#    preferIpAddress: true
+#    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+#    hostname: eureka-server02
+#  client:
+#    serviceUrl:
+#      #      docker容器中使用的地址
+#      #      defaultZone: http://${eureka-server01-addr}:8761/eureka/
+#      #     本地使用的地址
+#      defaultZone: http://192.168.100.25:8761/eureka/
+#
+#
+#

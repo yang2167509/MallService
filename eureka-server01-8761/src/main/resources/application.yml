@@ -1,0 +1,25 @@
+# 应用名称
+spring:
+  application:
+    name: eureka-server
+# 应用服务 WEB 访问端口
+server:
+  port: 8761
+eureka:
+  server:
+    evictionIntervaltimerInMs: 60000
+    enableSelfPreservation: false
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: eureka-server01
+  client:
+    serviceUrl:
+      #      docker容器中使用的地址
+      #      defaultZone: http://${eureka-server02-addr}:8762/eureka/
+      #     本地使用的地址
+#      defaultZone: http://192.168.100.25:8762/eureka/
+#      defaultZone: http://172.20.10.10:8761/eureka/ #gjw
+#      defaultZone: http://10.69.37.140:8761/eureka/ #gjw
+#      defaultZone: http://eureka-server:8761/eureka/ #k8s中注册中心的服务名称eureka-server
+      defaultZone: http://localhost:8761/eureka/

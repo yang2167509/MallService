@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - my_net
+  db:
+    image: mysql:8.0.26
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    networks:
+      - my_net
+networks:
+  my_net:

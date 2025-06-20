@@ -1,0 +1,21 @@
+# 应用名称
+spring:
+  application:
+    name: actuator
+  boot:
+    admin:
+      client:
+        url: 'http://192.168.100.25:7000'
+# 应用服务 WEB 访问端口
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+

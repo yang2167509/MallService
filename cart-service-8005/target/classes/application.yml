@@ -1,0 +1,18 @@
+# 应用名称
+spring:
+  application:
+    name: cart-service
+server:
+  port: 8005
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #开启所有端点
+opentracing:
+  jaeger:
+    enabled: true
+    udp-sender:
+      host: 10.69.37.142
+      port: 6831  #gjw
+

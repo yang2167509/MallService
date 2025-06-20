@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-service-8005
+  namespace: gjw-24-06-27
+  labels:
+    app: cart-service-8005
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart-service-8005
+  template:
+    metadata:
+      name: cart-service-8005
+      labels:
+        app: cart-service-8005
+    spec:
+      containers:
+        - name: cart-service-8005
+          image: cart-service-8005:24.06.28
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8005
+      nodeSelector:
+        preferrednode: node2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-service-8005
+  namespace: gjw-24-06-27
+spec:
+  type: NodePort
+  selector:
+    app: cart-service-8005
+  ports:
+    - protocol: TCP
+      port: 8005
+      targetPort: 8005
