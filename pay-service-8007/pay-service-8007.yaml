@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pay-service-8007
+  namespace: gjw-24-06-27
+  labels:
+    app: pay-service-8007
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pay-service-8007
+  template:
+    metadata:
+      name: pay-service-8007
+      labels:
+        app: pay-service-8007
+    spec:
+      containers:
+        - name: pay-service-8007
+          image: pay-service-8007:24.06.28
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8007
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pay-service-8007
+  namespace: gjw-24-06-27
+spec:
+  type: NodePort
+  selector:
+    app: pay-service-8007
+  ports:
+    - protocol: TCP
+      port: 8007
+      targetPort: 8007
